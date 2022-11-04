@@ -1,0 +1,35 @@
+<div class="card-body">
+    <div class="col-md-12 col-sm-12">
+    <!-- <core-card-snippet > -->
+      <h4 class="card-title">User Images</h4>
+        <!-- <p class="card-text">
+          If true, allows to interact with carousel using keyboard 'arrow left' and 'arrow right'. By default is
+          <strong>true</strong>. You can set it to false by adding <code>[keyboard]='false'</code> directive to
+          <code>&lt;ngb-carousel&gt;&lt;/ngb-carousel&gt;</code>
+          component.
+        </p> -->
+        <!-- ngb-carousel component -->
+        <ngb-carousel *ngIf="carouselImages">
+          <ng-template ngbSlide>
+            <div class="carousel-img-wrapper">
+              <img [src]="carouselImages.two" class="img-fluid" alt="Random first slide" />
+            </div>
+            <div class="carousel-caption"></div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <div class="carousel-img-wrapper">
+              <img [src]="carouselImages.five" class="img-fluid" alt="Random second slide" />
+            </div>
+            <div class="carousel-caption"></div>
+          </ng-template>
+          <ng-template ngbSlide>
+            <div class="carousel-img-wrapper">
+              <img [src]="carouselImages.three" class="img-fluid" alt="Random third slide" />
+            </div>
+            <div class="carousel-caption"></div>
+          </ng-template>
+        </ngb-carousel>
+        <!-- ngb-carousel component -->
+      </div>
+    <!-- </core-card-snippet> -->
+  </div>

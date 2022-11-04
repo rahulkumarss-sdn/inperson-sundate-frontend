@@ -1,0 +1,117 @@
+<div class="slideout-content">
+    <!-- Modal to add new user starts-->
+    <div class="modalsd modal-slide-in sdfade new-user-modal" id="modals-slide-in">
+      <div class="modal-dialog">
+        <form class="edit-admin-sidebar modal-content pt-0" [formGroup]="moderatorForm">
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+            (click)="toggleEditSidebar('edit-admin-sidebar')"
+          >
+          </button>
+          <div class="modal-header mb-1">
+            <h5 class="modal-title" id="exampleModalLabel">Edit Moderator</h5>
+          </div>
+          <div class="modal-body flex-grow-1">
+            <div class="form-group">
+              <label class="form-label" for="basic-icon-default-fullname">User Name</label>
+              <input
+                type="text"
+                class="form-control dt-full-name"
+                id="basic-icon-default-fullname"
+                
+                name="user-fullname"
+                formControlName="username"
+                required
+                aria-label="John Doe"
+                aria-describedby="basic-icon-default-fullname2"
+              />
+            </div>
+  
+            <div>
+              <label class="form-label" for="basic-icon-default-fullname">Role</label>
+              <fieldset class="form-group">
+                <ng-select
+                  [items]="selectRole"
+                  [(ngModel)]="selectedRole"
+                  name="selectedRole"
+                  bindLabel="name"
+                  formControlName="role"
+                  
+                  (change)="filterByRole($event)"
+                ></ng-select>
+              </fieldset>
+            </div>
+  
+            <div class="form-group">
+              <label class="form-label" for="basic-icon-default-fullname">Email</label>
+              <input
+                type="email"
+                class="form-control dt-full-name"
+                id="basic-icon-default-fullname"
+               
+                name="user-fullname"
+                formControlName="email"
+                required
+                aria-label="John Doe"
+                aria-describedby="basic-icon-default-fullname2"
+              />
+              <!-- <span *ngIf="newUserForm.submitted && FNameRef.invalid" class="invalid-form">
+                <small class="form-text text-danger" *ngIf="FNameRef.errors.required">This field is required!</small>
+              </span> -->
+            </div>
+  
+            <div class="form-group">
+              <label class="form-label" for="basic-icon-default-fullname">Password</label>
+              <input
+                type="password"
+                class="form-control dt-full-name"
+                id="basic-icon-default-fullname"
+                
+                name="user-fullname"
+                formControlName="password"
+                required
+                aria-label="John Doe"
+                aria-describedby="basic-icon-default-fullname2"
+              />
+              <!-- <span *ngIf="newUserForm.submitted && FNameRef.invalid" class="invalid-form">
+                <small class="form-text text-danger" *ngIf="FNameRef.errors.required">This field is required!</small>
+              </span> -->
+            </div>
+  
+            <div class="form-group">
+              <label class="form-label" for="basic-icon-default-fullname">Confirm Password</label>
+              <input
+                type="password"
+                class="form-control dt-full-name"
+                id="basic-icon-default-fullname"
+                
+                name="user-fullname"
+                formControlName="confirmPassword"
+                required
+                aria-label="John Doe"
+                aria-describedby="basic-icon-default-fullname2"
+              />
+              <!-- <span *ngIf="newUserForm.submitted && FNameRef.invalid" class="invalid-form">
+                <small class="form-text text-danger" *ngIf="FNameRef.errors.required">This field is required!</small>
+              </span> -->
+            </div>
+      
+            <button type="submit" class="btn btn-primary mr-1" (click)="submit(moderatorForm)" rippleEffect>Submit</button>
+            <button
+              type="reset"
+              class="btn btn-outline-secondary"
+              (click)="toggleEditSidebar('edit-admin-sidebar')"
+              rippleEffect
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Modal to add new user Ends-->
+  </div>
+  

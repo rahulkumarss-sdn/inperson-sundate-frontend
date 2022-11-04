@@ -1,0 +1,16 @@
+<div class="card-body">
+    <div>
+      <h4 class="card-title">User Videos</h4>
+        <div class="videos_container">
+          <div *ngFor="let video of userVideos; let i = index" class="video_container" >
+            <video class="video-block" id="{{ video._id }}" controls>
+                <source src="{{video.video}}" alt={{video._id}}/>
+                Browser not supported
+            </video>
+            <button *ngIf="!isViewer" class="btn" [ngClass]="video.blocked ? 'btn-success' : 'btn-danger'" (click)="blockVideo(video._id, video)">
+              {{ video.blocked ? 'Unblock' : 'Block'}} video
+            </button>
+          </div>
+        </div>
+      </div>
+  </div>

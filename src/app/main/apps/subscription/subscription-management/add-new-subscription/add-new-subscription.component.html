@@ -1,0 +1,160 @@
+<div class="slideout-content">
+    <!-- Modal to add new user starts-->
+    <div class="modalsd modal-slide-in sdfade new-user-modal" id="modals-slide-in">
+      <div class="modal-dialog">
+        <form  *ngIf="productData && (productData.actionType=='create' || productData.actionType=='update')" class="add-new-user modal-content pt-0" [formGroup]="productForm">
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+            (click)="toggleSidebar('new-user-sidebar')"
+          >
+          </button>
+          <div class="modal-header mb-1">
+            <h5 class="modal-title" id="exampleModalLabel">Add Plan</h5>
+          </div>
+          <div class="modal-body flex-grow-1" >
+            <div class="form-group" *ngIf="productData.actionType=='create'">
+              <label class="form-label" for="basic-icon-default-fullname">Plan Name</label>
+              <input
+                type="text"
+                class="form-control dt-full-name"
+                id="basic-icon-default-fullname"
+                placeholder="Premium Membership"
+                name="user-fullname"
+                formControlName="name"
+                required
+                aria-label="John Doe"
+                aria-describedby="basic-icon-default-fullname2"
+              />
+         
+            </div>
+
+            <div class="form-group" *ngIf="productData.actionType=='create'">
+              <label class="form-label" for="basic-icon-default-fullname">Description</label>
+              <input
+                type="text"
+                class="form-control dt-full-name"
+                id="basic-icon-default-fullname"
+                placeholder="Write Plan description"
+                name="user-fullname"
+                formControlName="description"
+                required
+                aria-label="John Doe"
+                aria-describedby="basic-icon-default-fullname2"
+              />
+         
+            </div>
+            
+            <div class="form-group" *ngIf="productData.actionType=='create'" >
+                     <label class="form-label" for="basic-icon-default-email">Add Feauture</label>
+                     <div class="options">
+                       <textarea
+                       type="text"
+                       id="basic-icon-default-email"
+                       class="form-control dt-email"
+                       placeholder="add some awesome features."
+                       aria-label="john.doe@example.com"
+                       aria-describedby="basic-icon-default-email2"
+                       name="feauture"
+                       formControlName="features"
+                       required
+                     ></textarea>
+                     </div>
+                    
+            </div>
+
+            <div>
+              <button (click)="addProductPrices()"  type="button" class="btn icon-btn btn-sm hide-arrow green" rippleEffect>
+                <span [data-feather]="'plus-square'" [class]="'cursor-pointer'"></span>
+               </button>
+               <div class="form-group" formArrayName="prices" *ngFor="let product of productForm.get('prices')['controls']; let i = index;">
+               <div [formGroupName]="i">
+                     <label class="form-label" for="basic-icon-default-email">Add Price</label>
+                     <div class="options">
+                       <input
+                       type="text"
+                       id="basic-icon-default-email"
+                       class="form-control dt-email"
+                       placeholder="300"
+                       aria-label="john.doe@example.com"
+                       aria-describedby="basic-icon-default-email2"
+                       name="user-email"
+                       formControlName="unit_amount"
+                       required
+                     />
+                     </div>
+                     <label class="form-label" for="basic-icon-default-email"> Interval Count</label>
+                     <div class="options">
+                       <input
+                       type="number"
+                       id="basic-icon-default-email"
+                       class="form-control dt-email"
+                       placeholder="3"
+                       aria-label="john.doe@example.com"
+                       aria-describedby="basic-icon-default-email2"
+                       name="user-email"
+                       formControlName="interval_count"
+                       required
+                     />
+                    </div>
+                     <label class="form-label" for="basic-icon-default-email">Add Interval Duration</label>
+                     <div class="options">
+                     <div ngbDropdown container="body">
+                        <select class="form-control mx-10" name="options" formControlName="interval" >
+                          <option *ngFor="let interval of intervals"  [ngValue]="interval.value">{{ interval.name }}</option>
+                        </select>
+                      </div>
+                    </div>
+                     <button (click)="deleteProductDetails(i)" type="button" class="btn icon-btn btn-sm hide-arrow red" rippleEffect>
+                       <span [data-feather]="'trash-2'" [class]="'cursor-pointer'"></span>
+                     </button>
+                     </div>
+               </div>
+            </div>
+
+          </div>
+
+          <div class="modal-body">
+            <button type="submit" class="btn btn-primary mr-1" (click)="submit(productForm)" rippleEffect>Submit</button>
+            <button
+              type="reset"
+              class="btn btn-outline-secondary"
+              (click)="toggleSidebar('new-user-sidebar')"
+              rippleEffect
+            >
+              Cancel
+            </button>
+            </div>
+        </form>
+
+        <div class="add-new-user modal-content pt-0" *ngIf="productData && productData.actionType=='delete'">
+            <div class="modal-body flex-grow-1 delete-price" *ngIf="productData && productData._id">
+                <div *ngFor="let product of productData.product_details">
+                   
+                    <h6>
+                       <strong> Price :</strong> {{product.price}}
+                    </h6>
+                    <h6>
+                       <strong> Intevral :</strong>  {{product.interval.interval_count}} {{product.interval.interval}}
+                    </h6>
+                    <h6>
+                        <strong> Price :</strong> {{product.active ? 'Active' : 'Inactive'}}
+                     </h6>
+                    <br>
+                    <button class="btn btn-primary delete-icon"  (click)="updatePriceDetails(product)" >
+                        <a href="javascript:;" class="delete" ngbDropdownItem (click)="toggleSidebar('new-user-sidebar',row)"
+                        ><span [data-feather]="'feather repeat'" [size]="16" [class]="'mr-50'"></span> Change Status</a
+                    >
+                    </button>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

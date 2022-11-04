@@ -1,0 +1,120 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <!-- users edit start -->
+    <section class="app-user-edit">
+      <div class="card">
+        <div class="card-body">
+          <ul ngbNav #nav="ngbNav" class="nav nav-pills">
+            <li ngbNavItem>
+              <a ngbNavLink class="d-flex align-items-center">
+                <i data-feather="info" class="mr-sm-50"></i><span class="d-none d-sm-block">Contact Us</span></a
+              >
+              <ng-template ngbNavContent>
+                <!-- Information Tab starts -->
+                <div class="tab-pane" id="information" aria-labelledby="information-tab" role="tabpanel">
+                  <!-- users edit Info form start  -->
+                  <form class="form-validate" [formGroup]="contactForm">
+                    <div class="row mt-1">
+                      <div class="col-12">
+                        <h4 class="mb-1">
+                          <i data-feather="edit" [size]="16" class="mr-75 font-medium-4"></i>
+                          <span class="align-middle">Contact us information</span>
+                        </h4>
+                      </div>
+                      <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                          <label for="website">Email Address</label>
+                          <input
+                            id="website"
+                            type="mail"
+                            class="form-control"
+                            placeholder="abc@example.com"
+                            name="Mailing Address"
+                            formControlName="mailingAddress"
+                          />
+                        </div>
+                      </div>
+                     
+                      <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                          <label for="website">Corporate Address</label>
+                            <input id="mobile" type="text" formControlName="corporateAddress" placeholder="Address" class="form-control" name="phone" />
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6">
+                        <div class="form-group">
+                          <label for="country">Description</label>
+                          <textarea
+                            id="country"
+                            type="text"
+                            class="form-control"
+                            name="country"
+                            formControlName="description"
+                            placeholder="United States"
+                          ></textarea>
+                        </div>
+                      </div>
+                      <div *ngIf="!isViewer" class="col-12 d-flex flex-sm-row flex-column mt-2">
+                        <button type="submit" (click)="submit(contactForm)" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1" rippleEffect>
+                          Save Changes
+                        </button>
+                        <button type="reset" class="btn btn-outline-secondary" rippleEffect>Reset</button>
+                      </div>
+                    </div>
+                  </form>
+                  <!-- users edit Info form ends -->
+                </div>
+                <!-- Information Tab ends -->
+              </ng-template>
+            </li>
+          </ul>
+          <div [ngbNavOutlet]="nav" class="mt-2"></div>
+        </div>
+      </div>
+    </section>
+    <!-- users edit ends -->
+    <div class="row">
+        <!-- User Card starts-->
+        <div class="col-xl-12 col-lg-12 col-md-12">
+          <div class="card user-card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-xl-6 col-lg-12 d-flex flex-column justify-content-between border-container-lg">
+                  <div class="user-avatar-section">
+                    <div class="d-flex justify-content-start">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-12 col-lg-12">
+                  <div class="user-info-wrapper">
+                    <div class="d-flex flex-wrap">
+                      <div class="user-info-title">
+                        <i data-feather="mail" class="mr-1"></i>
+                        <span class="card-text user-info-title font-weight-bold mb-0">Email:</span>
+                      </div>
+                      <p class="card-text mb-0">{{contactForm.get('mailingAddress').value}}</p>
+                    </div>
+                    <div class="d-flex flex-wrap my-50">
+                      <div class="user-info-title">
+                        <i data-feather="star" class="mr-1"></i>
+                        <span class="card-text user-info-title font-weight-bold mb-0">Corporate Address:</span>
+                      </div>
+                      <p class="card-text mb-0">{{contactForm.get('corporateAddress').value}}</p>
+                    </div>
+                    <div class="d-flex flex-wrap my-50">
+                      <div class="user-info-title">
+                        <i data-feather="flag" class="mr-1"></i>
+                        <span class="card-text user-info-title font-weight-bold mb-0">Description:</span>
+                      </div>
+                      <p class="card-text mb-0">{{contactForm.get('description').value}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /User Card Ends-->
+      </div>
+  </div>
+</div>

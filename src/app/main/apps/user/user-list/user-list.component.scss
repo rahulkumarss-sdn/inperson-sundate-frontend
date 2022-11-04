@@ -1,0 +1,46 @@
+@import '@core/scss/angular/libs/datatables.component.scss';
+@import '@core/scss/base/pages/app-user.scss';
+@import '@core/scss/angular/libs/select.component.scss';
+
+
+.table-reponsive {
+    &.user_table{
+        overflow-x: auto;
+
+        .ngx-datatable{
+            &.fixed-header {
+                .datatable-header {
+                    .datatable-header-inner {
+                        .datatable-header-cell{
+                            &:nth-child(5){
+                                width: 110px !important;
+                            }
+                            &:last-child{
+                                width: auto !important;
+                            }
+                        }
+                    }
+                }
+            }
+            &.fixed-row {
+                .datatable-scroll {
+                    .datatable-body-row {
+                        .datatable-body-cell{
+                            &:nth-child(2),&:nth-child(3),&:nth-child(4){
+                                // padding-left: 8px !important;
+                            }
+                            &:nth-child(5){
+                                width: 110px !important;
+                                padding-left: 0;
+                            }
+                            &:last-child{
+                                width: auto !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+}

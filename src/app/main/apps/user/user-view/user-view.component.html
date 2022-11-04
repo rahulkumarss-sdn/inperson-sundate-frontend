@@ -1,0 +1,272 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <!-- page users view start -->
+    <section class="app-user-view">
+      <!-- User Card & Plan Starts -->
+      <div class="row">
+        <!-- User Card starts-->
+        <div class="col-md-4">
+          <div class="user-avatar-section">
+            <div class="imgBox">
+              <img src="assets/images/avatars/12.png" class="img-fluid" alt="avatar">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-8">
+          <div class="user_info_wrapper">
+            <div class="row">
+              <div class="col-md-6">
+                <h4 class="main-title">{{ data.firstname }}</h4>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div  class="user-info-title">
+                      <!-- <i data-feather="check" class="mr-1"></i> -->
+                      <h4>Status</h4>
+                    </div>
+                    <p>{{data.isBlocked?'Blocked':'Unblocked'}}</p>
+                  </div>
+  
+                  <div class="col-md-6">
+                    <div  class="user-info-title">
+                      <!-- <i data-feather="check" class="mr-1"></i> -->
+                      <h4>Block Count</h4>
+                    </div>
+                    <!-- <p>{{data.blockCount}}</p> -->
+                    <p>12</p>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div  class="user-info-title">
+                      <!-- <i data-feather="check" class="mr-1"></i> -->
+                      <h4>Email</h4>
+                    </div>
+                    <p>{{ data.email }}</p>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="user-info-title">
+                      <h4>Language</h4>
+                    </div>
+                    <p>English Hindi</p>
+                  </div>
+                  
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="user-info-title">
+                      <h4>Occupation</h4>
+                    </div>
+                    <p>Student</p>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="user-info-title">
+                      <h4>Ethnicity</h4>
+                    </div>
+                    <p>German</p>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="user-info-title">
+                      <h4>Children</h4>
+                    </div>
+                    <p>0</p>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="user-info-title">
+                      <h4>Education</h4>
+                    </div>
+                    <p>Option1</p>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="user-info-title">
+                      <h4>Location</h4>
+                    </div>
+                    <p>Kaula lumpur</p>
+                  </div>
+
+                  <div class="col-md-6">
+                    <div class="user-info-title">
+                      <h4>Relationship Status</h4>
+                    </div>
+                    <p>Single</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="rightBox">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="user-info-title">
+                        <!-- <i data-feather="flag" class="mr-1"></i> -->
+                        <h4>Location</h4>
+                      </div>
+                      <p>{{data.country}}</p>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="user-info-title">
+                        <!-- <i data-feather="phone" class="mr-1"></i> -->
+                        <h4>Contact</h4>
+                      </div>
+                      <p>{{ data.contactNo }}</p>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="user-info-title">
+                        <h4>Smoke</h4>
+                      </div>
+                      <p>Occasionally</p>
+                    </div>
+  
+                    <div class="col-md-6">
+                      <div class="user-info-title">
+                        <h4>Drink</h4>
+                      </div>
+                      <p>Occasionally</p>
+                    </div>
+                  </div>
+  
+                  <div *ngIf="!isViewer" class="d-flex flex-wrap">
+                    <button class="btn btn-outline-danger ml-1"  (click)="deleteUserById(data._id,rowIndex)"rippleEffect>Delete</button><br>
+                    <button class="btn btn-outline-warning ml-1 rippleEffectml-1"   (click)="changeStatus(data)" rippleEffect>{{data.isBlocked ? 'Unblock' : 'Block'}}</button>
+                    <!-- <a routerLink="/apps/user/user-edit/{{ data.id }}" class="btn btn-primary" rippleEffect
+                    >Edit</a
+                  > -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <ng-template >
+            <div class="mr-1 ml-0">
+              <div
+                [ngClass]="{
+                  'bg-light-success': data.status == 'active',
+                  'bg-light-secondary': data.status == 'inactive',
+                  'bg-light-warning': data.status == 'pending'
+                }"
+                class="rounded p-3"
+              >
+                <h2
+                  [ngClass]="{
+                    'text-success': data.status == 'active',
+                    'text-secondary': data.status == 'inactive',
+                    'text-warning': data.status == 'pending'
+                  }"
+                  class="m-0"
+                >
+                  {{ data.firstname | initials }}
+                </h2>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+        <!-- /User Card Ends-->
+
+        <!-- Plan Card starts-->
+        <!-- <div class="col-xl-3 col-lg-4 col-md-5">
+          <div class="card plan-card border-primary">
+            <div class="card-header d-flex justify-content-between align-items-center pt-75 pb-1">
+              <h5 class="mb-0">Current Plan</h5>
+              <h4 class="badge badge-light-secondary" data-toggle="tooltip" data-placement="top" title="Expiry Date"
+                >July 22, 2020 <span class="nextYear"></span>
+              </span>
+            </div>
+            <div class="card-body">
+              <div class="badge badge-light-primary">Free</div>
+            <br>
+            <br>
+              <button class="btn btn-primary text-center btn-block" rippleEffect>Upgrade Plan</button>
+            </div>
+          </div>
+        </div> -->
+        <!-- /Plan CardEnds -->
+      </div>
+      <!-- User Card & Plan Ends -->
+
+      <!-- User Timeline & Permissions Starts 
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title mb-2">User Timeline</h4>
+            </div>
+            <div class="card-body">
+              <app-question-list [userId]="userId"></app-question-list>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title">User Plans</h4>
+            </div>
+            <p class="card-text ml-2">Select a Plan from options</p>
+            <div class="table-responsive">
+              <table class="table table-striped table-borderless">
+                <thead class="thead-light">
+                  <tr>
+                    <th >Plans</th>
+                    <th *ngFor="let plan of plans">{{plan.name}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Subscription</td>
+                    <td *ngFor="let plan of plans; let i  = index;" >
+                      <div  class="custom-control custom-radio">
+                        <input type="radio" class="custom-control-input" id="{{i}}"  [value]='plan.name' name="plans"  />
+                        <label class="custom-control-label" for={{i}} ></label>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      -->
+
+    </section>
+
+    <section>
+      <div class="row">
+        <div class="col-md-12">
+          <app-user-imgs [userId]="userId" ></app-user-imgs>
+        </div>
+      </div>
+      <!-- <app-user-video [userId]="userId" ></app-user-video> -->
+    </section>
+
+    <!-- <section id="card-demo-example">
+      <div class="row match-height">
+        <div class="col-md-6 col-lg-6">
+          <div class="card">
+            <video class="card-img-top" controls>
+              <source src="assets/images/video.mp4" type="video/mp4">
+            </video>
+            <div class="card-body">
+              <a href="javascript:void(0)" rippleEffect class="btn btn-outline-primary">User Profile Video</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+  </div>
+</div>

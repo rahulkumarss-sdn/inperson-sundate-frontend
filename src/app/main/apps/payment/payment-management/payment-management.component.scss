@@ -1,0 +1,38 @@
+@import '@core/scss/angular/libs/datatables.component.scss';
+@import '@core/scss/base/pages/app-user.scss';
+@import '@core/scss/angular/libs/select.component.scss';
+
+
+.modal-dialog{
+    background-color: white;
+}
+.modal-content{
+    padding-left: 10px;
+}
+
+.table-reponsive {
+    &.payment_table{
+        overflow-x: auto;
+        .ngx-datatable{
+            &.fixed-header {
+                .datatable-header {
+                    .datatable-header-inner {
+                        .datatable-header-cell{
+                            padding: 0 10px !important;
+                            background-color: red !important;
+                        }
+                    }
+                }
+            }
+            &.fixed-row {
+                .datatable-scroll {
+                    .datatable-body-row {
+                        .datatable-body-cell{
+                            padding: 0 10px !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

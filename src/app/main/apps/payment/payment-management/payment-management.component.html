@@ -1,0 +1,132 @@
+<div class="content-wrapper container-xxl p-0">
+  <div class="content-body">
+    <!-- User List -->
+    <section class="users-list-wrapper">
+      <div class="card">
+        <div class="row">
+          <div class="col-md-6 col-12">
+            <div class="d-flex justify-content-between align-items-center m-1">
+              <label class="d-flex align-items-center">Show
+                <select class="form-control mx-25" [(ngModel)]="selectedOption">
+                  <option value="10">10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                </select>
+                entries</label>
+            </div>
+          </div>
+          <div class="col-md-6 col-12 d-flex justify-content-start justify-content-md-end">
+            <div class="d-flex align-items-center justify-content-end pr-1 pb-1 pb-md-0">
+              <label class="d-flex align-items-center ml-1 ml-md-0">Search:<input [(ngModel)]="searchValue"
+                  name="searchValue" type="search" class="form-control ml-25" (keyup)="filterUpdate($event)"
+                  (search)="filterUpdate($event)" /></label>
+
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="table-reponsive payment_table">
+              <table class="table">
+                <ngx-datatable [rows]="rows" [rowHeight]="50" class="bootstrap core-bootstrap" [limit]="selectedOption"
+                  [columnMode]="ColumnMode.force" [headerHeight]="50" [footerHeight]="50" [scrollbarH]="true">
+                  <ngx-datatable-column name="User Name" prop="email" [width]="100">
+                    <ng-template let-row="row" let-name="value" ngx-datatable-cell-template>
+                      <div class="d-flex align-items-center">
+                        <div class="cell-line-height">
+                          <!-- <span style="color:blue" class="font-weight-bold">{{ row.name | titlecase }}</span> -->
+                          <span style="color:blue" class="font-weight-bold">John Doe</span>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </ngx-datatable-column>
+
+                  <ngx-datatable-column name="User Email" prop="email" [width]="150">
+                    <ng-template let-country="value" ngx-datatable-cell-template>
+                      <div>
+                        <p>john123@gmail.com</p>
+                      </div>
+                    </ng-template>
+                  </ngx-datatable-column>
+
+                  <ngx-datatable-column name="Purchase Date" prop="date-of-purchase" [width]="100">
+                    <ng-template let-country="value" ngx-datatable-cell-template>
+                      <div>
+                        <p>03-11-22</p>
+                      </div>
+                    </ng-template>
+                  </ngx-datatable-column>
+
+                  <ngx-datatable-column name="Expiry Date" prop="expiry-date" [width]="100">
+                    <ng-template let-country="value" ngx-datatable-cell-template>
+                      <div>
+                        <p>03-11-23</p>
+                      </div>
+                    </ng-template>
+                  </ngx-datatable-column>
+
+                  <ngx-datatable-column name="User Type" prop="country" [width]="100">
+                    <ng-template let-country="value" ngx-datatable-cell-template>
+                      <div>
+                        {{ country }}
+                        <p>Sunboy</p>
+                      </div>
+                    </ng-template>
+                  </ngx-datatable-column>
+
+                  <ngx-datatable-column name="Amount" prop="amount" [width]="50">
+                    <ng-template let-amount="value" ngx-datatable-cell-template>
+                      <div>
+                        {{ amount | uppercase}}
+                      </div>
+                    </ng-template>
+                  </ngx-datatable-column>
+
+                  <!-- <ngx-datatable-column name="Actions" [width]="40" [sortable]="false">
+                    <ng-template ngx-datatable-cell-template let-row="row">
+                      <a (click)="toggleSidebar('new-user-sidebar', row)">
+                        <span [data-feather]="'file-text'" [size]="16" [class]="'mr-50'"></span> Details</a>
+                    </ng-template>
+                  </ngx-datatable-column> -->
+
+                  <ngx-datatable-column name="Actions" [width]="40" [sortable]="false">
+                    <ng-template ngx-datatable-cell-template let-row="row">
+                      <div ngbDropdown container="body">
+                        <button ngbDropdownToggle type="button" class="btn icon-btn btn-sm hide-arrow" rippleEffect>
+                          <span [data-feather]="'more-vertical'" [class]="'cursor-pointer'"></span>
+                        </button>
+                        <div *ngIf="!isViewer" ngbDropdownMenu>
+                          <!-- <a 
+                          ngbDropdownItem
+                            ><span [data-feather]="'file-text'" [size]="16" [class]="'mr-50'"></span> Details</a
+                          > -->
+                          <a (click)="openAddNewContent('new-user-sidebar',row)" ngbDropdownItem>
+                            <span [data-feather]="'eye'" [size]="16" [class]="'mr-50'"></span> View
+                          </a>
+                          <a (click)="openAddNewContent('new-user-sidebar',row)" ngbDropdownItem>
+                            <span [data-feather]="'check-circle'" [size]="16" [class]="'mr-50'"></span> Approve
+                          </a>
+                          <a href="javascript:;" ngbDropdownItem (click)="deleteFaqContent(row._id)">
+                            <span [data-feather]="'trash'" [size]="16" [class]="'mr-50'"></span> Reject
+                          </a>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </ngx-datatable-column>
+
+                </ngx-datatable>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- New User Sidebar -->
+  <core-sidebar class="modal modal-slide-in sidebar-todo-modal fade" name="new-user-sidebar"
+    overlayClass="modal-backdrop">
+    <app-payment-details></app-payment-details>
+  </core-sidebar>
+</div>

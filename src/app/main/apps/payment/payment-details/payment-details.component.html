@@ -1,0 +1,25 @@
+<div class="slideout-content">
+    <!-- Modal to add new user starts-->
+    <div class="modalsd modal-slide-in sdfade new-user-modal" id="modals-slide-in">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <h2 class="heading">Subscription Details</h2>
+          <br>
+          <div>
+            <div>
+              <h4><b>Plan Name </b>: {{ userPaymentDetails.planName }} </h4>
+              <!-- <h4><b>Amount</b> : {{ userPaymentDetails.currentAmount }} </h4> -->
+              <h4><b>Currency</b> : {{ userPaymentDetails.amount }} </h4>
+              <!-- <h4><b>Duration</b> : {{userPaymentDetails.interval }} </h4> -->
+              <h4><b>Active Status</b> : <span class="">{{userPaymentDetails.active ? 'Active' : 'Inactive'}}</span> </h4>
+              <h4><b>Start Date</b> : {{ userPaymentDetails.current_period_start
+                *1000 | date }} </h4>
+              <h4><b>End Date</b> : {{ userPaymentDetails.current_period_end
+                    *1000 | date }} </h4>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

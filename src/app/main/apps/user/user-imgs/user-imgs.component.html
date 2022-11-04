@@ -1,0 +1,34 @@
+<div class="card-body">
+    <div>
+      <h4 class="card-title">User Images</h4>
+            <!-- <div class="images_box">
+              <div *ngFor="let image of userImages; let i = index" >
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="imgBox">
+                      <img src="{{image.image}}" alt="{{image.userId}}" class="img-fluid"/>
+                      <button *ngIf="!isViewer" class="btn" [ngClass]="image.blocked ? 'btn-success' : 'btn-danger'" (click)="blockImage(image._id, image)">
+                        {{ image.blocked ? 'Unblock' : 'Block'}} Image
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+            <div class="image_section_box">
+              <div class="row">
+                <div class="col-md-3"  *ngFor="let image of userImages; let i = index">
+                  <div class="outerBox">
+                    <div class="imgBox">
+                      <img src="{{image.image}}" alt="{{image.userId}}" alt="" class="img-fluid"/>
+                    </div>
+                    <button *ngIf="!isViewer" class="btn" [ngClass]="image.blocked ? 'btn-success' : 'btn-danger'" (click)="blockImage(image._id, image)">
+                      {{ image.blocked ? 'Unblock' : 'Block'}} Image
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+  </div>

@@ -1,0 +1,64 @@
+<div class="content-wrapper container-xxl p-0">
+    <div class="content-body">
+        <section class="users-list-wrapper">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-start pb-1">
+                  <div>
+                    <h4 class="card-title mb-25">Question Details</h4>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <div class="d-inline-block mr-1">
+                    <div class="d-flex align-items-center">
+                      <h6 class="mb-0 text-color">Question Number</h6> : 
+                    </div>
+                  </div>
+                  <div class="d-inline-block">
+                    <div class="d-flex align-items-center">
+                      <h6 class="mb-0">{{questionDetails.questionNo}}</h6>
+                    </div>
+                  </div>
+                  <br>
+                      <div class="d-inline-block mr-1">
+                        <div class="d-flex align-items-center">
+                          <h6 class="mb-0 text-color">Question Name</h6> : 
+                        </div>
+                      </div>
+                      <div class="d-inline-block">
+                        <div class="d-flex align-items-center">
+                          <h6 class="mb-0">{{questionDetails.question}}</h6>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="d-inline-block mr-1">
+                        <div class="d-flex align-items-center">
+                          <h6 class="mb-0 text-color">Answer</h6> : 
+                        </div>
+                      </div>
+                      <div class="d-inline-block ">
+                        <div class="d-flex align-items-center">
+                            <select class="form-control col-sm-100" name="options" >
+                                <option *ngFor="let answer of questionDetails.options" >{{ answer.option }}</option>
+                            </select>
+                        </div>
+                      </div>
+                      <!-- <div *ngIf="questionDetails.subQuestions.length > 0">
+                        <br>
+                        <div class="d-inline-block mr-1">
+                            <div class="d-flex align-items-center">
+                            <h6 class="mb-0 text-color">Answer</h6> : 
+                            </div>
+                        </div>
+                        <div class="d-inline-block mr-1">
+                            <div class="d-flex align-items-center">
+                                <select class="form-control" name="options" >
+                                    <option *ngFor="let answer of questionDetails.options" >{{ answer.option }}</option>
+                                </select>
+                            </div>
+                        </div>
+                      </div> -->
+                    </div>
+                </div>
+        </section>
+    </div>
+</div>
